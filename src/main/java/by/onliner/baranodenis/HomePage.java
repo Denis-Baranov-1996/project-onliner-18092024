@@ -1,5 +1,15 @@
 package by.onliner.baranodenis;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 public class HomePage {
-    public static final String BUTTON_LOGIN_XPATH = "//div[@class='auth-bar__item auth-bar__item--text']";
+    WebDriver driver;
+
+    public void clickButtonLogin() {
+        By buttonLoginBy = By.xpath(HomePageXPath.BUTTON_LOGIN_XPATH);
+        WebElement buttonLogin = driver.findElement(buttonLoginBy);
+        buttonLogin.click();
+    }
 }
