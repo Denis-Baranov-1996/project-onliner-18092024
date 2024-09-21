@@ -18,7 +18,7 @@ public class LoginPage {
         buttonEnter.click();
     }
 
-    public void InputEmail(String email) {
+    public void inputEmail(String email) {
         By inputEmailBy = By.xpath(LoginPageXPath.INPUT_EMAIL_XPATH);
         WebElement inputEmail = driver.findElement(inputEmailBy);
         inputEmail.sendKeys(email);
@@ -28,5 +28,17 @@ public class LoginPage {
         By inputPasswordBy = By.xpath(LoginPageXPath.INPUT_PASSWORD_XPATH);
         WebElement inputPassword = driver.findElement(inputPasswordBy);
         inputPassword.sendKeys(password);
+    }
+
+    public  WebElement errorEmailText() {
+        By errorEmailBy = By.xpath(LoginPageXPath.ERROR_EMAIL_XPATH);
+        WebElement getErrorEmail = driver.findElement(errorEmailBy);
+        return getErrorEmail;
+    }
+
+    public WebElement errorPasswordText() {
+        By errorPasswordBy = By.xpath(LoginPageXPath.ERROR_PASSWORD_XPATH);
+        WebElement getErrorPassword = driver.findElement(errorPasswordBy);
+        return getErrorPassword;
     }
 }

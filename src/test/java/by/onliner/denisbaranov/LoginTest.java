@@ -3,10 +3,8 @@ package by.onliner.denisbaranov;
 import by.onliner.baranodenis.CookiePage;
 import by.onliner.baranodenis.HomePage;
 import by.onliner.baranodenis.LoginPage;
-import by.onliner.baranodenis.Waiters;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTest {
 
@@ -22,5 +20,26 @@ public class LoginTest {
 
         LoginPage loginPage = new LoginPage();
         loginPage.clickButtonEnter();
+    }
+
+    @Test
+    public void testLoginWithEmptyPassword() {
+
+        HomePage homePage = new HomePage();
+        homePage.open();
+        homePage.clickButtonLogin();
+
+        CookiePage cookiePage = new CookiePage();
+        cookiePage.clickButtonCloseCookie();
+
+        LoginPage loginPage = new LoginPage();
+        loginPage.inputEmail("test@test.by");
+        loginPage.inputPassword("");
+        loginPage.clickButtonEnter();
+
+        String actualTextPassword = loginPage.errorPasswordText().getText();
+        String expectedTextPassword = "Укажите пароль";
+
+        Assertions.assertEquals(expectedTextPassword,actualTextPassword);
     }
 }
