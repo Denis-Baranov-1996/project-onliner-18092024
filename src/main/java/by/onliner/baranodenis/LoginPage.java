@@ -13,6 +13,7 @@ public class LoginPage {
     }
 
     public void clickButtonEnter() {
+        Waiters.waitFor(4);
         By buttonEnterBy = By.xpath(LoginPageXPath.BUTTON_ENTER_XPATH);
         Waiters.waitFor(3);
         WebElement buttonEnter = driver.findElement(buttonEnterBy);

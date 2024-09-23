@@ -16,9 +16,6 @@ public class LoginTest {
         homePage.open();
         homePage.clickButtonLogin();
 
-        CookiePage cookiePage = new CookiePage();
-        cookiePage.clickButtonCloseCookie();
-
         LoginPage loginPage = new LoginPage();
         loginPage.clickButtonEnter();
     }
@@ -30,9 +27,6 @@ public class LoginTest {
         homePage.open();
         homePage.clickButtonLogin();
 
-        //CookiePage cookiePage = new CookiePage();
-        //cookiePage.clickButtonCloseCookie();
-
         LoginPage loginPage = new LoginPage();
         loginPage.inputEmail("test@test.by");
         loginPage.inputPassword("");
@@ -40,6 +34,24 @@ public class LoginTest {
 
         String actualTextPassword = loginPage.errorPasswordText();
         String expectedTextPassword = "Укажите пароль";
+
+        Assertions.assertEquals(expectedTextPassword,actualTextPassword);
+    }
+
+    @Test
+    public void testLoginWithEmptyTextOfEmail() {
+
+        HomePage homePage = new HomePage();
+        homePage.open();
+        homePage.clickButtonLogin();
+
+        LoginPage loginPage = new LoginPage();
+        loginPage.inputEmail("");
+        loginPage.inputPassword("123456");
+        loginPage.clickButtonEnter();
+
+        String actualTextPassword = loginPage.errorEmailText();
+        String expectedTextPassword = "Укажите ник или e-mail";
 
         Assertions.assertEquals(expectedTextPassword,actualTextPassword);
     }
