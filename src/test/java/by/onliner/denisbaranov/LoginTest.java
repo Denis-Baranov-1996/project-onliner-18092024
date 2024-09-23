@@ -1,9 +1,9 @@
 package by.onliner.denisbaranov;
 
-import by.onliner.baranodenis.CookiePage;
 import by.onliner.baranodenis.HomePage;
 import by.onliner.baranodenis.LoginPage;
-import by.onliner.baranodenis.Waiters;
+import by.onliner.baranodenis.driver.DriverSingleton;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +28,7 @@ public class LoginTest {
         homePage.clickButtonLogin();
 
         LoginPage loginPage = new LoginPage();
-        loginPage.inputEmail("test@test.by");
+        loginPage.inputEmail("testik@testov.by");
         loginPage.inputPassword("");
         loginPage.clickButtonEnter();
 
@@ -54,5 +54,28 @@ public class LoginTest {
         String expectedTextPassword = "Укажите ник или e-mail";
 
         Assertions.assertEquals(expectedTextPassword,actualTextPassword);
+    }
+
+    @Test
+    public void testLoginWithNotExistTextOfEmailAndPassword() {
+
+        HomePage homePage = new HomePage();
+        homePage.open();
+        homePage.clickButtonLogin();
+
+        LoginPage loginPage = new LoginPage();
+        loginPage.inputEmail("tester@tester.com");
+        loginPage.inputPassword("Ben_123456");
+        loginPage.clickButtonEnter();
+
+        String actualTextPassword = loginPage.errorPasswordOrEmailText();
+        String expectedTextPassword = "Неверный логин или пароль";
+
+        Assertions.assertEquals(expectedTextPassword,actualTextPassword);
+    }
+
+    @AfterEach
+    public void close() {
+        DriverSingleton.closeDriver();
     }
 }

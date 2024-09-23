@@ -45,4 +45,11 @@ public class LoginPage {
         WebElement getErrorPassword = driver.findElement(errorPasswordBy);
         return getErrorPassword.getText();
     }
+
+    public String errorPasswordOrEmailText() {
+        Waiters.waitFor(4);
+        By errorEmailBy = By.xpath(LoginPageXPath.ERROR_PASSWORD_OR_EMAIL_XPATH);
+        WebElement getErrorEmail = driver.findElement(errorEmailBy);
+        return getErrorEmail.getText();
+    }
 }
