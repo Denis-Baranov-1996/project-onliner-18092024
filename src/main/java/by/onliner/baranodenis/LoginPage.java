@@ -14,6 +14,7 @@ public class LoginPage {
 
     public void clickButtonEnter() {
         By buttonEnterBy = By.xpath(LoginPageXPath.BUTTON_ENTER_XPATH);
+        Waiters.waitFor(3);
         WebElement buttonEnter = driver.findElement(buttonEnterBy);
         buttonEnter.click();
     }
@@ -30,15 +31,17 @@ public class LoginPage {
         inputPassword.sendKeys(password);
     }
 
-    public  WebElement errorEmailText() {
+    public String errorEmailText() {
+        Waiters.waitFor(4);
         By errorEmailBy = By.xpath(LoginPageXPath.ERROR_EMAIL_XPATH);
         WebElement getErrorEmail = driver.findElement(errorEmailBy);
-        return getErrorEmail;
+        return getErrorEmail.getText();
     }
 
-    public WebElement errorPasswordText() {
+    public String errorPasswordText() {
+        Waiters.waitFor(4);
         By errorPasswordBy = By.xpath(LoginPageXPath.ERROR_PASSWORD_XPATH);
         WebElement getErrorPassword = driver.findElement(errorPasswordBy);
-        return getErrorPassword;
+        return getErrorPassword.getText();
     }
 }
