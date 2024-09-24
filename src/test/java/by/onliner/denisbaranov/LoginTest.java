@@ -74,8 +74,8 @@ public class LoginTest {
         Assertions.assertEquals(expectedTextPassword,actualTextPassword);
     }
 
-    @AfterEach
+    /*@AfterEach
     public void close() {
         DriverSingleton.closeDriver();
-    }
+    }*/
 }
