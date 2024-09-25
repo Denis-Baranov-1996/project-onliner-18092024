@@ -2,8 +2,6 @@ package by.onliner.denisbaranov;
 
 import by.onliner.baranodenis.HomePage;
 import by.onliner.baranodenis.LoginPage;
-import by.onliner.baranodenis.driver.DriverSingleton;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
